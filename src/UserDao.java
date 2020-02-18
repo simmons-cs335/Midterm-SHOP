@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class UserDao {
 
@@ -25,7 +22,7 @@ public class UserDao {
             Statement insertUser = connection.createStatement();
             insertUser.execute(
                     "INSERT INTO Users " +
-                            "(USER_ID, USER_NAME, SHIPPING_ADDRESS, CITY, STATE, ZIP_CODE, EMAIL)" +
+                            "(user_id, user_name, shipping_address, city, state, zip_code, email)" +
                             " VALUES ('" + cols[0] + "', '" + cols[1] + "', '" + cols[2] + "', '" + cols[3] + "', '" +
                             cols[4] + "', '" + cols[5] + "', '" + cols[6] + "')");
         } catch (Exception e) {
@@ -34,18 +31,38 @@ public class UserDao {
     }
 
     //Remove user
-    /*
-    public void delete(){
+    public void delete(int id){
+        try {
+            Statement deleteUser = connection.createStatement();
+            deleteUser.execute(
+                    "DELETE from Users WHERE user_id="+ id
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //View User Cart
+    public void cart(String user) {
+        try {
+            Statement viewUserCart = connection.createStatement();
+            ResultSet rc = viewUserCart.executeQuery(
+                    "SELECT " +
+                            "FROM " +
+                            "INNER JOIN "
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
-     */
 
     //Read and print all users in USER
     public void list() {
         try {
             Statement selectUsers = connection.createStatement();
             ResultSet rs = selectUsers.executeQuery(
-                    "SELECT USER_ID, USER_NAME, SHIPPING_ADDRESS, CITY, STATE, ZIP_CODE, EMAIL FROM Users");
+                    "SELECT user_id, user_name, shipping_address, city, state, zip_code, email FROM Users");
             // Iterate over result set and print each user's info.
             while (rs.next()) {
                 System.out.println("User Id: " + rs.getInt(1));
