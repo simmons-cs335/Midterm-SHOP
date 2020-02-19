@@ -10,11 +10,11 @@ import java.sql.Statement;
 /*
  Accesses the Shopping cart table using JDBC.
  */
-public class StateDao{
+public class StateTaxDao{
     private Connection connection;
 
     // Constructor initializes database connection.
-    StateDao(String user, String password) {
+    StateTaxDao(String user, String password) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
