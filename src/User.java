@@ -23,7 +23,7 @@ public class User {
 		  return true;
 	  }
 	return false;
-	  
+
   }
   public boolean isvalid_zipcode (CharSequence zipcode){
 	  String zipcodeRegex = "^[0-9]{5}(?:-[0-9]{4})?$";
@@ -36,7 +36,37 @@ public class User {
     return(email.matches(emailRegex));
 
   }
-  public boolean isvalid_payment() {
-	  return true;
-  }
+  public boolean isvalid_payment(String c_num, String type) {
+   boolean valid = false;
+   if (c_num.length()>=13 && c_num.length()<=16) {
+     if (c_num.charAt(0)=='4') {
+       valid = true;
+       System.out.println("You are using a Visa Card");
+     }
+     else if (c_num.charAt(0)=='5') {
+       valid = true;
+       System.out.println("You are using a Mastercard");
+     }
+     else if (c_num.charAt(0)=='3') {
+       if(c_num.charAt(1)=='7') {
+         valid = true;
+         System.out.println("You are using an American Express card");
+       }
+       else
+         System.out.println("Not a valid card");
+     }
+     else if (c_num.charAt(0)=='6') {
+       valid = true;
+       System.out.println("You are using a Discover card");
+     }
+     else {
+       System.out.println("Not a valid card");
+     }
+   }
+   else{
+     System.out.println("Not a valid card");
+   }
+   return valid;
+
+ }
 }
