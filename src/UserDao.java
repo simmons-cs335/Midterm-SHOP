@@ -3,6 +3,7 @@ import java.sql.*;
 public class UserDao {
 
     private Connection connection;
+    private String address;
 
     //Constructor
     UserDao(String user, String password){
@@ -54,8 +55,37 @@ public class UserDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    //Return street address
+    public String address(String name){
+        try {
+            Statement getUserAddress = connection.createStatement();
+            ResultSet rs = getUserAddress.executeQuery(
+                    "SELECT Users.shipping_address FROM Users WHERE user_name="+name
+            );
+            while (rs.next()) {
+                address = (rs.getString(1));
+            }
+            return address;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //Return city
+    /*
+    public String city(int id) {
 
     }
+     */
+
+    //Return state
+
+    //Return zipcode
+
+    //Return email
 
     //Read and print all users in USER
     public void list() {

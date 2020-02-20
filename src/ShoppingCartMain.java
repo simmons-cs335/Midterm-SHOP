@@ -1,8 +1,11 @@
 public class ShoppingCartMain {
     public static void main(String[] args) {
 
-        /*
+
         UserDao userdao = new UserDao("carletoc", "1683864");
+        String address = userdao.address("'Clara'");
+        System.out.println(address);
+        /*
         userdao.list(); //Print out users
         userdao.delete(2); //Delete a user
         userdao.list(); //Print out users
