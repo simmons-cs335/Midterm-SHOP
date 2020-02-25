@@ -4,6 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
+    public User(){
+
+    }
   public boolean isvalid_streetAddress(String address){
     String addressRegex = "\\d{1,4}\\s\\w.*";
     return (address.matches(addressRegex));
