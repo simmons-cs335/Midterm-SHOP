@@ -3,10 +3,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Hashtable;
 
-/*
- Accesses the Shopping cart table using JDBC.
- */
 public class CartDao{
 
     private Connection connection;
@@ -16,7 +14,7 @@ public class CartDao{
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://dany.simmons.edu:3306/33501sp20_hassana?useUnicode=yes&characterEncoding=UTF-8",
+                    "jdbc:mysql://dany.simmons.edu:3306/33501sp20_carletoc?useUnicode=yes&characterEncoding=UTF-8",
                     user, password);
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,7 +65,25 @@ public class CartDao{
         }
     }
 
-
+    //Put items in a HashTable
+    public Hashtable<String, Double> items(int id){
+        Hashtable<String, Double> items = new Hashtable();
+        try {
+            Statement getItems = connection.createStatement();
+            ResultSet rs = getItems.executeQuery(
+                    "SELECT Inventory.product_name, Inventory.product_price " +
+                            "FROM Inventory INNER JOIN ShoppingCart " +
+                            "ON Inventory.product_id=ShoppingCart.product_id WHERE ShoppingCart.user_id="+id
+            );
+            while (rs.next()) {
+                items.put(rs.getString(1),rs.getDouble(2));
+            }
+            return items;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     // Reads and prints all ro the Cart taws inble.
     public void list() {
@@ -84,4 +100,6 @@ public class CartDao{
 
         } catch (Exception e) {
             e.printStackTrace();
-        }}}
+        }
+    }
+}

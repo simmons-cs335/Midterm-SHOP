@@ -4,6 +4,7 @@ public class UserDao {
 
     private Connection connection;
     private String address;
+    private String name;
 
     //Constructor
     UserDao(String user, String password){
@@ -43,26 +44,29 @@ public class UserDao {
         }
     }
 
-    //View User Cart
-    public void cart(String user) {
+    //Retrieve name
+    public String name(int id){
         try {
-            Statement viewUserCart = connection.createStatement();
-            ResultSet rc = viewUserCart.executeQuery(
-                    "SELECT " +
-                            "FROM " +
-                            "INNER JOIN "
+            Statement getUserName = connection.createStatement();
+            ResultSet rs = getUserName.executeQuery(
+                    "SELECT Users.user_name FROM Users WHERE user_id="+id
             );
+            while (rs.next()) {
+                name = (rs.getString(1));
+            }
+            return name;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     //Return street address
-    public String address(String name){
+    public String address(int id){
         try {
             Statement getUserAddress = connection.createStatement();
             ResultSet rs = getUserAddress.executeQuery(
-                    "SELECT Users.shipping_address FROM Users WHERE user_name="+name
+                    "SELECT Users.shipping_address FROM Users WHERE user_id="+id
             );
             while (rs.next()) {
                 address = (rs.getString(1));
@@ -86,6 +90,21 @@ public class UserDao {
     //Return zipcode
 
     //Return email
+    public String email(int id){
+        try {
+            Statement getUserEmail = connection.createStatement();
+            ResultSet rs = getUserEmail.executeQuery(
+                    "SELECT Users.email FROM Users WHERE user_id="+id
+            );
+            while (rs.next()) {
+                address = (rs.getString(1));
+            }
+            return address;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     //Read and print all users in USER
     public void list() {
