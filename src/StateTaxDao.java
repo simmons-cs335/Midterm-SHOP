@@ -1,17 +1,12 @@
-/*
-  Created by Bob Zwolinski 2019-03-30
-*/
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-/*
- Accesses the Shopping cart table using JDBC.
- */
 public class StateTaxDao{
+
     private Connection connection;
+    private Double taxRate;
 
     // Constructor initializes database connection.
     StateTaxDao(String user, String password) {
@@ -28,14 +23,14 @@ public class StateTaxDao{
 
     // Getting StateTaxRate from the stateInitial
     // variable taxRate = salestax
-    public void stateTax(String initial) {
+    public Double stateTax(String initial) {
         try {
-            Statement state= connection.createStatement();
-            ResultSet taxRate =state.executeQuery(
+            Statement getTaxRate= connection.createStatement();
+            ResultSet rs = getTaxRate.executeQuery(
                     "select state_tax_rate from StateSalesTax where state_initial=" + initial
             );
-            while (taxRate.next()) {
-                System.out.println("The State Tax for " + initial+ " is: "+taxRate.getString(1));
+            while (rs.next()) {
+                taxRate = rs.getDouble(1);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -8,7 +8,7 @@ class UserTest {
 
     @BeforeEach
     void setUp() {
-        user = new User();
+        user = new User(1);
     }
 
     @Test
