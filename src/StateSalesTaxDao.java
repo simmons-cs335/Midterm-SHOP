@@ -3,13 +3,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class StateTaxDao{
+public class StateSalesTaxDao{
 
     private Connection connection;
     private Double taxRate;
 
     // Constructor initializes database connection.
-    StateTaxDao(String user, String password) {
+    StateSalesTaxDao(String user, String password) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
@@ -32,9 +32,11 @@ public class StateTaxDao{
             while (rs.next()) {
                 taxRate = rs.getDouble(1);
             }
+            return taxRate;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 
 
@@ -55,4 +57,6 @@ public class StateTaxDao{
 
         } catch (Exception e) {
             e.printStackTrace();
-        }}}
+        }
+    }
+}
