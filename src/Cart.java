@@ -6,21 +6,21 @@ public class Cart {
     private Hashtable<String, Double> items;
     private double totalPrice;
 
-    Cart(int id){
-        items = cartData.items(id);
+    Cart(int userId){
         totalPrice = 0;
     }
 
 
-    public void add(){
-
+    public void add(int userId, int prodId){
+        cartData.addItem(userId, prodId);
     }
 
     public void remove(){
 
     }
 
-    public Hashtable<String, Double> getItems(){
+    public Hashtable<String, Double> getItems(int userId){
+        items = cartData.items(userId);
         return items;
     }
 

@@ -23,14 +23,13 @@ public class CartDao{
 
 
     // Adding an item into a cart.
-    public void addItem(String[] cols) {
+    public void addItem(int userId, int prodId) {
         try {
             Statement insertItem = connection.createStatement();
             insertItem.execute(
-                    "INSERT INTO ShoppingCart " +
-                            "(cart_items_id, user_id, product_id)" +
-                            " VALUES ('" + Integer.parseInt(cols[1]) + "', '" + Integer.parseInt(cols[2])
-                            + "', '" + Integer.parseInt(cols[3])+ "')");
+                    "INSERT INTO ShoppingCart (user_id, product_id)" +
+                            "VALUES ("+ userId + "," + prodId +")"
+            );
         } catch (Exception e) {
             e.printStackTrace();
         }

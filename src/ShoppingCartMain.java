@@ -5,6 +5,8 @@ public class ShoppingCartMain {
         int id = (int)(Math.random()*(max-min+1)+min);
         User user = new User(id);
         Cart cart = user.getCart();
-        System.out.println(cart.getItems());
+        System.out.println(cart.getItems(id));
+        cart.add(id, 10);
+        System.out.println(cart.getItems(id));
     }
 }

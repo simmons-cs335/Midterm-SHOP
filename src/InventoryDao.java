@@ -20,14 +20,13 @@ public class InventoryDao {
     }
 
     //Add product
-    public void save(String[] cols){
+    public void addStock(int prodId){
         try {
-            Statement insertUser = connection.createStatement();
-            insertUser.execute(
-                    "INSERT INTO Inventory " +
-                            "(PRODUCT_ID, PRODUCT_NAME, PRODUCT_DEPARTMENT, PRODUCT_PRICE, INITIAL_QUANTITY, STOCK_QUANTITY, SOLD_UNITS)" +
-                            " VALUES ('" + cols[0] + "', '" + cols[1] + "', '" + cols[2] + "', '" + cols[3] + "', '" +
-                            cols[4] + "', '" + cols[5] + "', '" + cols[6] + "')");
+            Statement addStock = connection.createStatement();
+            addStock.execute(
+                    "UPDATE Inventory SET stock_quantity = stock_quantity + 1" +
+                            "WHERE product_id =" + prodId + "AND"
+            );
         } catch (Exception e) {
             e.printStackTrace();
         }
