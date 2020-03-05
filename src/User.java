@@ -1,46 +1,38 @@
-//import com.sun.org.apache.xpath.internal.operations.String;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.lang.String;
+import java.util.ArrayList;
+
+/**
+ *
+ * @ author Clara Carleton
+ *
+ */
+
 
 public class User {
 
     private UserDao userData = new UserDao("carletoc", "1683864");
     private String name;
     private Cart cart;
-    private String address;
+    private Address address;
+    private String c_num;
     private String email;
 
 
     User(int id){
         name = userData.name(id);
         cart = new Cart(id);
-        address = userData.address(id);
+        address = new Address(id);
         email = userData.email(id);
+        c_num = userData.credit_num(id);
     }
 
+    public String getName(){ return name; }
 
+    public String getEmail(){ return email; }
 
-    public String getName(){
-        return name;
-    }
+    public Address getAddress(){ return address;}
 
-    public String getEmail(){
-        return email;
-    }
+    public String getCredit() { return c_num;}
 
-    public String getAddress(){
-        return address;
-    }
-
-    public Cart getCart(){
-        return cart;
-    }
-
-    public String toString(){
-        return (name + ", " + address);
-    }
+    public Cart getCart(){ return cart; }
 }

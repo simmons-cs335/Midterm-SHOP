@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class UserDao {
 
@@ -61,12 +62,13 @@ public class UserDao {
         return null;
     }
 
-    //Return street address
-    public String address(int id){
+    //Return user's credit card number
+    public String credit_num(int id){
         try {
-            Statement getUserAddress = connection.createStatement();
-            ResultSet rs = getUserAddress.executeQuery(
-                    "SELECT Users.shipping_address FROM Users WHERE user_id="+id
+            Statement getCreditNum = connection.createStatement();
+            ResultSet rs = getCreditNum.executeQuery(
+                    "SELECT card_number " +
+                            "FROM PaymentMethod WHERE user_id="+id
             );
             while (rs.next()) {
                 address = (rs.getString(1));
@@ -77,17 +79,6 @@ public class UserDao {
         }
         return null;
     }
-
-    //Return city
-    /*
-    public String city(int id) {
-
-    }
-     */
-
-    //Return state
-
-    //Return zipcode
 
     //Return email
     public String email(int id){

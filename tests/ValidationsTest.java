@@ -92,18 +92,19 @@ public class ValidationsTest {
 
     @Test
     void isvalid_payment_AllValidOnes() {
-        assertTrue(valid.isvalid_payment("440098483928376","Visa"));
-        assertTrue(valid.isvalid_payment("579282916463729","Mastercard"));
-        assertTrue(valid.isvalid_payment("379328101832747","American Express"));
-        assertTrue(valid.isvalid_payment("6823876538292776","Discover"));
-        assertTrue(valid.isvalid_payment("6238765382927","Discover"));
+        assertTrue(valid.isvalid_payment("440098483928376"));
+        assertTrue(valid.isvalid_payment("579282916463729"));
+        assertTrue(valid.isvalid_payment("379328101832747"));
+        assertTrue(valid.isvalid_payment("6823876538292776"));
+        assertTrue(valid.isvalid_payment("6238765382927"));
     }
 
     @Test
     void isvalid_payment_AllInvalidOnes() {
-        assertFalse(valid.isvalid_payment("36947309498237","American Express")); //doesn't start with 37
-        assertFalse(valid.isvalid_payment("440087652845","Visa")); //length<13
-        assertFalse(valid.isvalid_payment("2345678321345","Discover")); //invalid first number
-        assertFalse(valid.isvalid_payment("5678927461527436789", "Discover")); //length>16
+        assertFalse(valid.isvalid_payment("36947309498237")); //doesn't start with 37
+        assertFalse(valid.isvalid_payment("440087652845")); //length<13
+        assertFalse(valid.isvalid_payment("2345678321345")); //invalid first number
+        assertFalse(valid.isvalid_payment("5678927461527436789")); //length>16
     }
+
 }

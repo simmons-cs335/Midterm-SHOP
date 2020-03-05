@@ -11,13 +11,12 @@ public class Validations {
     private String email;
     private String c_num; //credit card number
 
-
     public void Validations(int id){
         User user = new User(id);
-        address = user.getAddress();
-        city = user.getCity();
-        state = user.getState();
-        zipcode = user.getZipcode();
+        address = user.getAddress().getStreet();
+        city = user.getAddress().getCity();
+        state = user.getAddress().getState();
+        zipcode = user.getAddress().getZipcode();
         email = user.getEmail();
         c_num = user.getCredit();
     }
@@ -91,4 +90,5 @@ public class Validations {
         }
         return valid;
     }
+
 }
