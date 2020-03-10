@@ -12,7 +12,7 @@ public class Validations {
     private String c_num; //credit card number
 
 
-    public void Validations(int id){
+    public Validations(int id){
         User user = new User(id);
         address = user.getAddress();
         city = user.getCity();

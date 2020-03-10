@@ -1,13 +1,19 @@
+import javafx.concurrent.Task;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class ShoppingCartMain {
     public static void main(String[] args) {
-        int max = 4;
-        int min = 1;
-        int id = (int)(Math.random()*(max-min+1)+min);
-        User user = new User(id);
-        Cart cart = user.getCart();
-        System.out.println(cart.getItems(id));
-        cart.add(id, 10);
-        System.out.println(cart.getItems(id));
+        runProgram t1 = new runProgram();
+        runProgram t2 = new runProgram();
+        Timer t = new Timer();
+        t.schedule(t1, 1000);
+
+
+
     }
-    
 }
+
