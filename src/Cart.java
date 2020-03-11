@@ -24,7 +24,15 @@ public class Cart {
         return items;
     }
 
-    public void checkout(){
+    public void checkout(int user_id){
+        Validations validations = new Validations(user_id);
+        if(validations.validateAll()){
+            //Get price
+            //Delete Table
+            //Order Confirmation
+        }else{
+            System.out.println("Please update your information");
+        }
 
     }
 }

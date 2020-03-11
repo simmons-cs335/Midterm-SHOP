@@ -1,3 +1,7 @@
+/**
+ * @ author Clara Carleton
+ */
+
 public class Address {
     private AddressDao addressData = new AddressDao("carletoc", "1683864");
     private Address address;

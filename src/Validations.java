@@ -11,7 +11,7 @@ public class Validations {
     private String email;
     private String c_num; //credit card number
 
-    public void Validations(int id){
+    Validations(int id){
         User user = new User(id);
         address = user.getAddress().getStreet();
         city = user.getAddress().getCity();

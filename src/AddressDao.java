@@ -4,6 +4,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * @ author Clara Carleton
+ */
+
 public class AddressDao {
     private Connection connection;
 
