@@ -35,4 +35,8 @@ public class Address {
     public String getState() { return state; }
 
     public CharSequence getZipcode() { return zipcode; }
+
+    public String toString(){
+        return street + " " + city + ", " + state + " " + zipcode;
+    }
 }
