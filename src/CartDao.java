@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class CartDao{
@@ -68,6 +69,31 @@ public class CartDao{
         return null;
     }
 
+    /**
+     * @ author Clara Carleton
+     */
+    //Returns an arraylist of the item ids
+    public ArrayList<Integer> getItemIds(int user_id){
+        ArrayList<Integer> item_ids = new ArrayList<>();
+        try {
+            Statement getItemsIds = connection.createStatement();
+            ResultSet rs = getItemsIds.executeQuery(
+                    "SELECT ShoppingCart.cart_items_id " +
+                            "FROM ShoppingCart WHERE ShoppingCart.user_id="+user_id
+            );
+            while (rs.next()) {
+                item_ids.add(rs.getInt(1));
+            }
+            return item_ids;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * @ author Clara Carleton
+     */
     //Clears user's cart after completing the purchase
     public void clearCart(int user_id){
         try {
