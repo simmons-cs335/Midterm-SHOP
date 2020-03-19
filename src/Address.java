@@ -15,7 +15,7 @@ public class Address {
     }
 
     Address(String st, String c, String s, CharSequence zc){
-        street = s;
+        street = st;
         city = c;
         state = s;
         zipcode = zc;
