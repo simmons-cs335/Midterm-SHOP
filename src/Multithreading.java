@@ -13,8 +13,7 @@ public class Multithreading extends Thread{
         User user = new User(user_id);
         Cart cart = user.getCart();
         try {
-            System.out.println(user.getName() + " has started shopping...");
-            System.out.println("******************************************");
+            System.out.println("*****"+user.getName() + " has started shopping"+"*****");
             //adding or removing items
             for(int i=0; i<8; i++){
                 int random_item = (int)(Math.random()*(10-1+1)+1);
@@ -28,10 +27,9 @@ public class Multithreading extends Thread{
                 System.out.println("--- " + user.getName() + " removed an item...");
             }
             cart.checkout(user_id);
-            System.out.println("******************************************");
         } catch (Exception e){
-            System.out.println(user.getName() + " was interrupted...");
+            System.out.println("*****"+user.getName() + " was interrupted"+"*****");
         }
-        System.out.println(user.getName() + " has stopped shopping...");
+        System.out.println("*****"+user.getName() + " has stopped shopping"+"*****");
     }
 }

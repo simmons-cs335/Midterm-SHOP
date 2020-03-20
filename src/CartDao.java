@@ -3,10 +3,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class CartDao{
+
+    private static DecimalFormat df = new DecimalFormat("#.##");
 
     private Connection connection;
     private double price;
@@ -132,15 +135,12 @@ public class CartDao{
         try {
             Statement selectItems = connection.createStatement();
             ResultSet rs = selectItems.executeQuery(
-                    "SELECT ShoppingCart.cart_items_id, ShoppingCart.user_id, Inventory.product_id, Inventory.product_price " +
+                    "SELECT Inventory.product_name, Inventory.product_price " +
                             "FROM Inventory INNER JOIN ShoppingCart " +
                             "ON Inventory.product_id=ShoppingCart.product_id WHERE ShoppingCart.user_id="+id);
             while (rs.next()) {
-                System.out.println("Cart_Items_ID: " + rs.getInt(1));       // Item Index
-                System.out.println("UserID: " + rs.getInt(2));      // UserID
-                System.out.println("ProductID: " + rs.getInt(3));  // Product ID
-                System.out.println("ProductPrice: " + rs.getInt(4));  // Product ID
-                System.out.println("\n");
+                System.out.print(rs.getString(1) + "\t");
+                System.out.println("$"+df.format(rs.getDouble(2)));
             }
 
         } catch (Exception e) {

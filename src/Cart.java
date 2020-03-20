@@ -1,7 +1,10 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Cart {
+
+    private static DecimalFormat df = new DecimalFormat("#.##");
 
     private CartDao cartData = new CartDao("carletoc", "1683864");
     private Hashtable<String, Double> items;
@@ -55,16 +58,16 @@ public class Cart {
 
     public void checkout(int user_id){
         User user = new User(user_id);
-        //If validation true
-        System.out.println("Hello, " + user.getName() + ",\n\t Thank you for shopping with us! Your order " +
-                "for $" + getFinalPrice(user_id) + " has gone through. \nYour purchases are on their way to " +
-                user.getAddress() + ". A receipt has been sent to " + user.getEmail());
-        list(user_id);
-        cartData.clearCart(user_id);
-
-        //If validation false
-        //System.out.println("Please update your information");
-
-
+        Validations v = new Validations(user_id);
+        System.out.println("*****"+user.getName() + " is now checking out"+"*****");
+        if(v.validateAll()){
+            System.out.println("Hello, " + user.getName() + ",\n\t Thank you for shopping with us! Your order " +
+                    "for $" + df.format(getFinalPrice(user_id)) + " has gone through. \nYour purchases are on their way to " +
+                    user.getAddress() + ". A receipt has been sent to " + user.getEmail());
+            list(user_id);
+            cartData.clearCart(user_id);
+        }else{
+            System.out.println(user.getName() + ", please update your information");
+        }
     }
 }
