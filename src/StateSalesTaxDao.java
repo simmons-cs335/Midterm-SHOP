@@ -3,6 +3,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * @author Clara Carleton
+ */
+
 public class StateSalesTaxDao{
 
     private Connection connection;
@@ -13,7 +17,7 @@ public class StateSalesTaxDao{
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://dany.simmons.edu:3306/33501sp20_hassana?useUnicode=yes&characterEncoding=UTF-8",
+                    "jdbc:mysql://dany.simmons.edu:3306/33501sp20_carletoc?useUnicode=yes&characterEncoding=UTF-8",
                     user, password);
         } catch (Exception e) {
             e.printStackTrace();
@@ -23,11 +27,13 @@ public class StateSalesTaxDao{
 
     // Getting StateTaxRate from the stateInitial
     // variable taxRate = salestax
-    public Double stateTax(String initial) {
+    public Double salesTax(int id) {
         try {
             Statement getTaxRate= connection.createStatement();
             ResultSet rs = getTaxRate.executeQuery(
-                    "select state_tax_rate from StateSalesTax where state_initial=" + initial
+                    "SELECT state_tax_rate FROM StateSalesTax INNER JOIN Address " +
+                            "ON StateSalesTax.state_initial= Address.state WHERE Address.address_id=(" +
+                            "SELECT address_id FROM Users WHERE user_id= "+ id + " )"
             );
             while (rs.next()) {
                 taxRate = rs.getDouble(1);
@@ -38,6 +44,7 @@ public class StateSalesTaxDao{
         }
         return null;
     }
+
 
 
     // Reads and prints all of the stateTax table info.

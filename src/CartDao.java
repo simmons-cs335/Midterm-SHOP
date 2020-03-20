@@ -3,11 +3,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class CartDao{
 
+    private static DecimalFormat df = new DecimalFormat("#.##");
+
     private Connection connection;
+    private double price;
+    private double totalPrice;
 
     // Constructor initializes database connection.
     CartDao(String user, String password) {
@@ -36,30 +42,70 @@ public class CartDao{
     }
 
     // Deleting an item from a cart.
-    public void deleteItem(int id) {
+    public void deleteItem(int userId, int prodId) {
         try {
             Statement deleteItem = connection.createStatement();
             deleteItem.execute(
-                    "DELETE FROM ShoppingCart WHERE cart_items_id="+ id );
-        } catch (Exception e) {
+                    "DELETE FROM ShoppingCart WHERE (product_id = '" + prodId +
+                            "' AND user_id = '" + userId + "') ORDER BY cart_items_id ASC LIMIT 1 "
+            );
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
     //Getting Prices of Items in Cart
-    public void itemPrice(int id) {
+    public Double itemPrice(int id) {
         try {
             Statement itemPrice = connection.createStatement();
             ResultSet rs = itemPrice.executeQuery(
-                    "select ShoppingCart.user_id,ShoppingCart.cart_items_id, Inventory.product_id, Inventory.product_price" +
-                            " from ShoppingCart, Inventory where ShoppingCart.product_id= Inventory.product_id AND user_id=" + id);
+                    "SELECT Inventory.product_price FROM Inventory INNER JOIN ShoppingCart " +
+                            "ON Inventory.product_id=ShoppingCart.product_id WHERE ShoppingCart.user_id= "+ id);
             while (rs.next()) {
-                System.out.println("User ID: " + rs.getInt(1));
-                System.out.println("CartItem ID: " + rs.getInt(2));
-                System.out.println("Product ID: " + rs.getInt(3));
-                System.out.println("Product Price: " + rs.getDouble(4));
-                System.out.println("\n");
+                price = (rs.getDouble(1));
+                totalPrice += price;
             }
+            return totalPrice;
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * @ author Clara Carleton
+     */
+    //Returns an arraylist of the item ids
+    public ArrayList<Integer> getItemIds(int user_id){
+        ArrayList<Integer> item_ids = new ArrayList<>();
+        try {
+            Statement getItemsIds = connection.createStatement();
+            ResultSet rs = getItemsIds.executeQuery(
+                    "SELECT ShoppingCart.cart_items_id " +
+                            "FROM ShoppingCart WHERE ShoppingCart.user_id="+user_id
+            );
+            while (rs.next()) {
+                item_ids.add(rs.getInt(1));
+            }
+            return item_ids;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * @ author Clara Carleton
+     */
+    //Clears user's cart after completing the purchase
+    public void clearCart(int user_id){
+        try {
+            Statement clearCart = connection.createStatement();
+            clearCart.execute(
+                    "DELETE FROM ShoppingCart WHERE user_id =" + user_id
+            );
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -84,17 +130,17 @@ public class CartDao{
         return null;
     }
 
-    // Reads and prints all ro the Cart taws inble.
-    public void list() {
+    // Reads and prints all items in a user's cart
+    public void list(int id) {
         try {
             Statement selectItems = connection.createStatement();
             ResultSet rs = selectItems.executeQuery(
-                    "SELECT cart_items_id, user_id, product_id FROM ShoppingCart");
+                    "SELECT Inventory.product_name, Inventory.product_price " +
+                            "FROM Inventory INNER JOIN ShoppingCart " +
+                            "ON Inventory.product_id=ShoppingCart.product_id WHERE ShoppingCart.user_id="+id);
             while (rs.next()) {
-                System.out.println("Item: " + rs.getInt(1));       // Item Index
-                System.out.println("UserID: " + rs.getInt(2));      // UserID
-                System.out.println("ProductID: " + rs.getInt(3));  // Product ID
-                System.out.println("\n");
+                System.out.print(rs.getString(1) + "\t");
+                System.out.println("$"+df.format(rs.getDouble(2)));
             }
 
         } catch (Exception e) {

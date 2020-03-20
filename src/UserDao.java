@@ -1,11 +1,20 @@
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+
+/**
+ * @author Clara Carleton
+ */
 
 public class UserDao {
 
     private Connection connection;
     private String address;
     private String name;
+    private ArrayList<User> users;
+    boolean useDb = true;
 
     //Constructor
     UserDao(String user, String password){
@@ -17,6 +26,23 @@ public class UserDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Constructor that accepts a list of Users.
+     * @param users list of books
+     */
+    UserDao(ArrayList<User> users) {
+        this.useDb = false;
+        this.users = users;
+    }
+
+    /**
+     * Empty constructor to support adding users one-by-one.
+     */
+    UserDao() {
+        this.useDb = false;
+        this.users = new ArrayList<User>();
     }
 
     //Add user

@@ -1,12 +1,8 @@
 import java.lang.String;
-import java.util.ArrayList;
 
 /**
- *
  * @ author Clara Carleton
- *
  */
-
 
 public class User {
 

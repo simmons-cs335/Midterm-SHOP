@@ -4,8 +4,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * @author Clara Carleton
+ */
+
 public class AddressDao {
     private Connection connection;
+    private ArrayList<Address> addresses;
+    boolean useDb = true;
 
     // Constructor initializes database connection.
     AddressDao(String user, String password) {
@@ -17,6 +23,23 @@ public class AddressDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Constructor that accepts a list of Addresses.
+     * @param addresses list of books
+     */
+    AddressDao(ArrayList<Address> addresses) {
+        this.useDb = false;
+        this.addresses = addresses;
+    }
+
+    /**
+     * Empty constructor to support adding addresses one-by-one.
+     */
+    AddressDao() {
+        this.useDb = false;
+        this.addresses = new ArrayList<Address>();
     }
 
     public ArrayList<String> getAddress(int user_id){

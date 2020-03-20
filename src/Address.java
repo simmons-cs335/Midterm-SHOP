@@ -1,3 +1,7 @@
+/**
+ * @ author Clara Carleton
+ */
+
 public class Address {
     private AddressDao addressData = new AddressDao("carletoc", "1683864");
     private Address address;
@@ -6,16 +10,6 @@ public class Address {
     private String state;
     private CharSequence zipcode;
 
-    Address(){
-
-    }
-
-    Address(String st, String c, String s, CharSequence zc){
-        street = s;
-        city = c;
-        state = s;
-        zipcode = zc;
-    }
 
     Address(int user_id){
         street = addressData.getAddress(user_id).get(0);
@@ -31,4 +25,8 @@ public class Address {
     public String getState() { return state; }
 
     public CharSequence getZipcode() { return zipcode; }
+
+    public String toString(){
+        return street + " " + city + ", " + state + " " + zipcode;
+    }
 }
