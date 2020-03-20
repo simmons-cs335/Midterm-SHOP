@@ -10,16 +10,6 @@ public class Address {
     private String state;
     private CharSequence zipcode;
 
-    Address(){
-
-    }
-
-    Address(String st, String c, String s, CharSequence zc){
-        street = st;
-        city = c;
-        state = s;
-        zipcode = zc;
-    }
 
     Address(int user_id){
         street = addressData.getAddress(user_id).get(0);

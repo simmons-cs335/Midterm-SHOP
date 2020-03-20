@@ -10,11 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AddressTest {
 
     private Address address;
+    private int user_id = 2;
 
     @BeforeEach
-    void setUp(){
-
-    }
+    void setUp(){ address = new Address(user_id);}
 
     @Test
     void testCorrectCity(){
@@ -28,11 +27,11 @@ public class AddressTest {
 
     @Test
     void testCorrectZipCode(){
-        assertEquals("02115", address.getState());
+        assertEquals("02115", address.getZipcode());
     }
 
     @Test
-    void testGetAddress() {
+    void testGetStreet() {
         assertEquals("300 The Fenway", address.getStreet());
     }
 }

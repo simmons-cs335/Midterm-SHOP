@@ -13,13 +13,6 @@ public class User {
     private String c_num;
     private String email;
 
-    User(String n, Cart c, Address a, String cn, String e){
-        name = n;
-        cart = c;
-        address = a;
-        c_num = cn;
-        email = e;
-    }
 
     User(int id){
         name = userData.name(id);
