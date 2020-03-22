@@ -6,6 +6,9 @@ import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
+/**
+ * @ author Clara Carleton
+ */
 
 public class CartDao{
 
