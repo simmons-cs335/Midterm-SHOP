@@ -1,6 +1,10 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
+ 
+/**
+ * @ author Amran Hassan
+ */
 
 public class Cart {
 
