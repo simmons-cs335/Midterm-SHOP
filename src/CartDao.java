@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
 /**
- * @ author Clara Carleton
+ * @ author Amran Hassan
  */
 
 public class CartDao{
