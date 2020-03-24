@@ -3,6 +3,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Pragyee Nepal
+ */
 public class Validations {
     private String address;
     private String city;

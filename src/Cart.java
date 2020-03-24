@@ -1,10 +1,10 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Hashtable;
  
 /**
  * @ author Amran Hassan
  */
+
 
 public class Cart {
 
@@ -14,13 +14,10 @@ public class Cart {
     private double totalPrice;
 
     private StateSalesTaxDao taxData = new StateSalesTaxDao("carletoc", "1683864");
-    private Double taxRate;
-    private Double finalPrice;
     private ArrayList<Integer> item_ids;
 
-    Cart(int id){
+    Cart(){
     }
-
 
     public void add(int userId, int prodId){
         cartData.addItem(userId, prodId);
@@ -46,6 +43,9 @@ public class Cart {
 
     public ArrayList<Integer> getItemIds(int user_id) {return item_ids = cartData.getItemIds(user_id);}
 
+    /**
+     * @author Clara Carleton & Lila Ottinger
+     */
     public void checkout(int user_id){
         User user = new User(user_id);
         Validations v = new Validations(user_id);

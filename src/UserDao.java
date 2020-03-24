@@ -30,7 +30,7 @@ public class UserDao {
 
     /**
      * Constructor that accepts a list of Users.
-     * @param users list of books
+     * @param users list of users
      */
     UserDao(ArrayList<User> users) {
         this.useDb = false;

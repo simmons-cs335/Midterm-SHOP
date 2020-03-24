@@ -16,7 +16,7 @@ public class User {
 
     User(int id){
         name = userData.name(id);
-        cart = new Cart(id);
+        cart = new Cart();
         address = new Address(id);
         email = userData.email(id);
         c_num = userData.credit_num(id);

@@ -27,7 +27,7 @@ public class AddressDao {
 
     /**
      * Constructor that accepts a list of Addresses.
-     * @param addresses list of books
+     * @param addresses list of addresses
      */
     AddressDao(ArrayList<Address> addresses) {
         this.useDb = false;

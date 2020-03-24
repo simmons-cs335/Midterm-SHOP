@@ -1,15 +1,13 @@
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Hashtable;
-/**
- * @ author Amran Hassan
- */
 
+/**
+ * @author Amran Hassan
+ */
 public class CartDao{
 
     private static DecimalFormat df = new DecimalFormat("#.##");
@@ -122,9 +120,18 @@ public class CartDao{
     /**
      * @ author Clara Carleton
      */
-    //Clears user's cart after completing the purchase
+    //Clears user's cart after completing the purchase and updates amount of sold units
     public void clearCart(int user_id){
         try {
+            Statement soldUnits = connection.createStatement();
+            ResultSet rs = soldUnits.executeQuery(
+                    "SELECT product_id " +
+                            "FROM ShoppingCart WHERE user_id=" + user_id
+            );
+            while(rs.next()){
+                Statement updateSold = connection.createStatement();
+                updateSold.execute("UPDATE Inventory SET sold_units = sold_units + 1 WHERE product_id =" + rs.getInt(1));
+            }
             Statement clearCart = connection.createStatement();
             clearCart.execute(
                     "DELETE FROM ShoppingCart WHERE user_id =" + user_id
