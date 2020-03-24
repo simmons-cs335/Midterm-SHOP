@@ -45,6 +45,9 @@ public class UserDao {
         this.users = new ArrayList<User>();
     }
 
+    /**
+     * @author Clara Carleton
+     */
     //Add user
     public void save(String[] cols){
         try {
@@ -59,6 +62,9 @@ public class UserDao {
         }
     }
 
+    /**
+     * @author Clara Carleton
+     */
     //Remove user
     public void delete(int id){
         try {
@@ -71,6 +77,9 @@ public class UserDao {
         }
     }
 
+    /**
+     * @author Clara Carleton
+     */
     //Retrieve name
     public String name(int id){
         try {
@@ -88,6 +97,9 @@ public class UserDao {
         return null;
     }
 
+    /**
+     * @author Clara Carleton
+     */
     //Return user's credit card number
     public String credit_num(int id){
         try {
@@ -106,6 +118,9 @@ public class UserDao {
         return null;
     }
 
+    /**
+     * @author Clara Carleton
+     */
     //Return email
     public String email(int id){
         try {
@@ -123,6 +138,9 @@ public class UserDao {
         return null;
     }
 
+    /**
+     * @author Clara Carleton
+     */
     //Read and print all users in USER
     public void list() {
         try {

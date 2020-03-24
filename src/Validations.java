@@ -26,19 +26,33 @@ public class Validations {
         email = user.getEmail();
         c_num = user.getCredit();
     }
+
+    /**
+     * @author Pragyee Nepal
+     */
     public boolean validateAll(){
         return (isvalid_streetAddress(address)&& isvalid_city(city)&& isvalid_state(state)&& isvalid_zipcode(zipcode)&& isvalid_email(email)&& isvalid_payment(c_num));
     }
+
+    /**
+     * @author Pragyee Nepal
+     */
     public boolean isvalid_streetAddress(String address){
         String addressRegex = "\\d{1,4}\\s\\w.*";
         return (address.matches(addressRegex));
     }
 
+    /**
+     * @author Pragyee Nepal
+     */
     public boolean isvalid_city (String city){
         String cityRegex= "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$";
         return (city.matches(cityRegex));
     }
 
+    /**
+     * @author Pragyee Nepal
+     */
     public boolean isvalid_state (String state){
         List<String> allstates = Arrays.asList("Alabama","AL","Alaska","AK","Arizona","AZ","Arkansas","AR","California","CA","Colorado","CO","Connecticut","CT","Delaware","DE", "DC", "Florida","FL","Georgia","GA","Hawaii","HI",
                 "Idaho","ID","Illinois","IL","Indiana","IN","Iowa","IA","Kansas","KS","Kentucky","KY","Louisiana","LA","Maine","ME","Maryland","MD","Massachusetts","MA","Michigan","MI","Minnesota","MN",
@@ -52,6 +66,9 @@ public class Validations {
         return false;
     }
 
+    /**
+     * @author Pragyee Nepal
+     */
     public boolean isvalid_zipcode (CharSequence zipcode){
         String zipcodeRegex = "^[0-9]{5}(?:-[0-9]{4})?$";
         Pattern pattern = Pattern.compile(zipcodeRegex);
@@ -59,11 +76,17 @@ public class Validations {
         return(matcher.matches());
     }
 
+    /**
+     * @author Pragyee Nepal
+     */
     public boolean isvalid_email (String email){
         String emailRegex = "\\w[\\w._]{1,25}@\\w*.(com|edu|net)";
         return(email.matches(emailRegex));
     }
 
+    /**
+     * @author Pragyee Nepal
+     */
     public boolean isvalid_payment(String c_num) {
         boolean valid = false;
         if (c_num.length()>=13 && c_num.length()<=16) {
