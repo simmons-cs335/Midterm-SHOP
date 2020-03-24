@@ -28,6 +28,7 @@ public class AddressDao {
     /**
      * Constructor that accepts a list of Addresses.
      * @param addresses list of addresses
+     * @author Clara Carleton
      */
     AddressDao(ArrayList<Address> addresses) {
         this.useDb = false;
@@ -36,12 +37,16 @@ public class AddressDao {
 
     /**
      * Empty constructor to support adding addresses one-by-one.
+     * @author Clara Carleton
      */
     AddressDao() {
         this.useDb = false;
         this.addresses = new ArrayList<Address>();
     }
 
+    /**
+     * @author Clara Carleton
+     */
     public ArrayList<String> getAddress(int user_id){
         ArrayList<String> addressInfo = new ArrayList<String>();
         try {

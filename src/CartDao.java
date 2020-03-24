@@ -29,7 +29,9 @@ public class CartDao{
         }
     }
 
-
+    /**
+     * @author Amran Hassan
+     */
     // Checks if Item is in Stock.
     // If so, adds the item into a cart while subtracting 1 from the stock_quantity in Inventory Column
     public void addItem(int userId, int prodId) {
@@ -59,6 +61,9 @@ public class CartDao{
         }
     }
 
+    /**
+     * @author Amran Hassan
+     */
     // Deleting an item from a cart. And adds the adds 1 to the stock_quantity in Inventory Column
     public void deleteItem(int userId, int prodId) {
         try {
@@ -77,6 +82,9 @@ public class CartDao{
         }
     }
 
+    /**
+     * @author Amran Hassan
+     */
     //Getting Prices of Items in Cart
     public Double itemPrice(int id) {
         try {
@@ -96,7 +104,7 @@ public class CartDao{
     }
 
     /**
-     * @ author Clara Carleton
+     * @author Clara Carleton
      */
     //Returns an arraylist of the item ids
     public ArrayList<Integer> getItemIds(int user_id){
@@ -118,7 +126,7 @@ public class CartDao{
     }
 
     /**
-     * @ author Clara Carleton
+     * @author Clara Carleton
      */
     //Clears user's cart after completing the purchase and updates amount of sold units
     public void clearCart(int user_id){
@@ -142,6 +150,9 @@ public class CartDao{
         }
     }
 
+    /**
+     * @author Clara Carleton
+     */
     // Reads and prints all items in a user's cart and the item's price
     public void list(int id) {
         try {

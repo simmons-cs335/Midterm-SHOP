@@ -16,31 +16,52 @@ public class Cart {
     private StateSalesTaxDao taxData = new StateSalesTaxDao("carletoc", "1683864");
     private ArrayList<Integer> item_ids;
 
-    Cart(){
-    }
-
+    /**
+     * @author Amran Hassan
+     */
     public void add(int userId, int prodId){
         cartData.addItem(userId, prodId);
     }
 
+    /**
+     * @author Amran Hassan
+     */
     public void remove(int userId, int prodId){cartData.deleteItem(userId, prodId); }
 
+    /**
+     * @author Amran Hassan
+     */
     public void price(int userId) {cartData.itemPrice(userId);}
 
+    /**
+     * @author Amran Hassan
+     */
     public Double getCartPrice(int userId) {
         return cartData.itemPrice(userId);
     }
 
+    /**
+     * @author Amran Hassan
+     */
     public Double getSalesTax(int userId) {
         return taxData.salesTax(userId);
     }
 
+    /**
+     * @author Amran Hassan
+     */
     public Double getFinalPrice(int userId) {
         return getCartPrice(userId) + (getSalesTax(userId)*getCartPrice(userId));
     }
 
+    /**
+     * @author Amran Hassan
+     */
     public void list(int userId) {cartData.list(userId);}
 
+    /**
+     * @author Clara Carleton
+     */
     public ArrayList<Integer> getItemIds(int user_id) {return item_ids = cartData.getItemIds(user_id);}
 
     /**
