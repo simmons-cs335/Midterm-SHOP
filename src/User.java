@@ -1,7 +1,7 @@
 import java.lang.String;
 
 /**
- * @ author Clara Carleton
+ * @author Clara Carleton
  */
 
 public class User {

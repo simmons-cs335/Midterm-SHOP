@@ -1,3 +1,6 @@
+/**
+ * @author Amran Hassan
+ */
 public class Inventory {
 
     private InventoryDao productData = new InventoryDao("carletoc", "1683864");

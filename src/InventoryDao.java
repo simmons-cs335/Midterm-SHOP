@@ -4,6 +4,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * @author Amran Hassan
+ */
+
 public class InventoryDao {
 
     private Connection connection;
@@ -45,6 +49,9 @@ public class InventoryDao {
         this.products = new ArrayList<Inventory>();
     }
 
+    /**
+     * @author Amran Hassan
+     */
     //Checks the Amount of Products listed in Inventory
     public Integer numberOfProducts(int prodId){
         try {
@@ -72,6 +79,9 @@ public class InventoryDao {
         }
     }
 
+    /**
+     * @author Amran Hassan
+     */
     //Returns Product Name
     public String productName(int prodId){
         try {
@@ -88,6 +98,9 @@ public class InventoryDao {
         return null;
     }
 
+    /**
+     * @author Amran Hassan
+     */
     //Returns the Department the product belongs to
     public String productDepartment(int prodId){
         try {
@@ -104,6 +117,9 @@ public class InventoryDao {
         return null;
     }
 
+    /**
+     * @author Amran Hassan
+     */
     //Returns the Price of the Product
     public Double productPrice(int prodId){
         try {
@@ -119,6 +135,10 @@ public class InventoryDao {
         }
         return null;
     }
+
+    /**
+     * @author Amran Hassan
+     */
     //Returns the number of products initially given
     public Integer checkInitialQuantity(int prodId){
         try {
@@ -134,6 +154,10 @@ public class InventoryDao {
         }
         return null;
     }
+
+    /**
+     * @author Amran Hassan
+     */
     //Checks the amount of units left in stock
     public Integer checkStockLeft(int prodId){
         try {
@@ -150,6 +174,9 @@ public class InventoryDao {
         return null;
     }
 
+    /**
+     * @author Amran Hassan
+     */
     // checks amount of sold units
     public Integer checkSoldAmount(int prodId){
         try {
@@ -166,6 +193,9 @@ public class InventoryDao {
         return null;
     }
 
+    /**
+     * @author Amran Hassan
+     */
     //Adds a new product to Inventory List
     public void addProduct(String[] cols){
         try {
@@ -181,6 +211,9 @@ public class InventoryDao {
         }
     }
 
+    /**
+     * @author Amran Hassan
+     */
     //Removes a product from Inventory List
     public void delete(int prodId){
         try {
@@ -195,7 +228,9 @@ public class InventoryDao {
         }
     }
 
-
+    /**
+     * @author Amran Hassan
+     */
     //Read and print all products in INVENTORY
     public void list() {
         try {
