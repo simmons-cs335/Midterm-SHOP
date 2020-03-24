@@ -1,5 +1,5 @@
 /**
- * @ author Clara Carleton
+ * @author Clara Carleton
  */
 
 public class Address {

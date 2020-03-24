@@ -2,7 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * @ author Clara Carleton
+ * @author Clara Carleton
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

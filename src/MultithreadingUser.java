@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 /**
- * @ author Clara Carleton
+ * @author Clara Carleton
  */
 
-public class Multithreading extends Thread{
+public class MultithreadingUser extends Thread{
     private int user_id;
-    public Multithreading(int user_id){
+    public MultithreadingUser(int user_id){
         this.user_id = user_id;
     }
     public void run() {
