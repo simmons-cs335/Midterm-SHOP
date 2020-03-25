@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
- * @author Clara Carleton
+ * @author Clara Carleton & Amran Hassan
  */
 
 public class StateSalesTaxDao{
@@ -24,7 +24,9 @@ public class StateSalesTaxDao{
         }
     }
 
-
+    /**
+     * @author Clara Carleton
+     */
     // Getting StateTaxRate from the stateInitial
     // variable taxRate = salestax
     public Double salesTax(int id) {
@@ -46,7 +48,9 @@ public class StateSalesTaxDao{
     }
 
 
-
+    /**
+     * @author Amran Hassan
+     */
     // Reads and prints all of the stateTax table info.
     public void list() {
         try {
