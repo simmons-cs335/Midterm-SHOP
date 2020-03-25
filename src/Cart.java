@@ -65,7 +65,7 @@ public class Cart {
     public ArrayList<Integer> getItemIds(int user_id) {return item_ids = cartData.getItemIds(user_id);}
 
     /**
-     * @author Clara Carleton & Lila Ottinger
+     * @author Clara Carleton & Lila Crum
      */
     public void checkout(int user_id){
         User user = new User(user_id);
