@@ -28,7 +28,7 @@ public class Inventory {
     /**
      * @author Amran Hassan
      */
-    public void addStock(int prodId){ productData.addStock(prodId); ; }
+    public void addStock(int prodId){ productData.addStock(prodId); }
 
     /**
      * @author Amran Hassan
