@@ -15,7 +15,9 @@ public class Cart {
 
     private StateSalesTaxDao taxData = new StateSalesTaxDao("carletoc", "1683864");
     private ArrayList<Integer> item_ids;
-
+ 
+    private OrderConfirmationDAO OrderConfirmationData = new OrderConfirmationDAO("carletoc", "1683864");
+    
     /**
      * @author Amran Hassan
      */
@@ -65,7 +67,7 @@ public class Cart {
     public ArrayList<Integer> getItemIds(int user_id) {return item_ids = cartData.getItemIds(user_id);}
 
     /**
-     * @author Clara Carleton & Lila Crum
+     * @author Clara Carleton & Lila Crum & Amran Hassan
      */
     public void checkout(int user_id){
         User user = new User(user_id);
@@ -76,6 +78,7 @@ public class Cart {
                     "for $" + df.format(getFinalPrice(user_id)) + " has gone through. \nYour purchases are on their way to " +
                     user.getAddress() + ". A receipt has been sent to " + user.getEmail());
             list(user_id);
+            order.save(user_id, getFinalPrice(user_id)); //Transfers the data to OrderConfirmationTable
             cartData.clearCart(user_id);
         }else{
             System.out.println(user.getName() + ", please update your information");
