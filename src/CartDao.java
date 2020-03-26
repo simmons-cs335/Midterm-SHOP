@@ -90,19 +90,18 @@ public class CartDao{
         try {
             Statement itemPrice = connection.createStatement();
             ResultSet rs = itemPrice.executeQuery(
-                    "SELECT Inventory.product_price FROM Inventory INNER JOIN ShoppingCart " +
+                    "SELECT SUM(Inventory.product_price ) FROM Inventory INNER JOIN ShoppingCart " +
                             "ON Inventory.product_id=ShoppingCart.product_id WHERE ShoppingCart.user_id= "+ id);
             while (rs.next()) {
                 price = (rs.getDouble(1));
-                totalPrice += price;
             }
-            return totalPrice;
+            return price;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
+    
     /**
      * @author Clara Carleton
      */
