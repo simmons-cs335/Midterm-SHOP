@@ -13,17 +13,21 @@ public class MultithreadingProducer extends Thread {
     }
     public void run() {
         Inventory product = new Inventory(prod_id);
-        System.out.println( "*****There are currently " + product.getNumberOfProducts() + " items listed in Inventory *****");
+        //System.out.println( "*****There are currently " + product.getNumberOfProducts() + " items listed in Inventory *****");
         try {
             System.out.println("*****PRODUCER has STARTED looking at " + product.getProductName()+" in Inventory*****");
 
-            System.out.printf("Producer is currently looking at: %s \n" +
-                            "\tIt belongs to the %s " + " department. \n" +
+            /*
+            System.out.printf("%s belongs to the %s " + " department. \n" +
                             "\tIt's current selling price is at $%s . \n" +
                             "\tSo far, you have sold %s" + " units of this item. \n" +
                             "\tAnd there are currently %s" + " left in stock \n",
                             product.getProductName(), product.getProductDepartment(),
                             product.getProductPrice(),  product.getSoldUnits(), product.getStockQuantity());
+             */
+            System.out.printf("\tItem: %s," + "\tDepartment: %s," + "\tPrice: $%s," + "\tSold Units: %s," + "\tStock Qty: %s\n",
+                    product.getProductName(), product.getProductDepartment(),
+                    product.getProductPrice(),  product.getSoldUnits(), product.getStockQuantity());
 
             //addStock if there isn't enough stock
             int currentStockQuantity = product.getStockQuantity();
@@ -33,8 +37,7 @@ public class MultithreadingProducer extends Thread {
             if( currentStockQuantity <= idealStockQuantity){
                 product.addStock(prod_id);
                 System.out.printf("+++!!!STOCKED ADDED producer wants to have a current of amount of %s %s 's\n" +
-                                "\t There is less than desired in stock." +
-                                "Therefore we have added more in stock!!!!!++++\n ",
+                                "\tThere is less than desired in stock, PRODUCER has added more in stock\n ",
                                 idealStockQuantity,product.getProductName());
             }
             else{
