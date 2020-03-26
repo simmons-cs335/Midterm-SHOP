@@ -44,7 +44,7 @@ public class CartDao{
             while (rs.next()) {
                 stockQuantity = (rs.getInt(1));
             }
-            if( stockQuantity > 0 ){
+            if( stockQuantity > 1 ){
                 insertItem.execute(
                         "INSERT INTO ShoppingCart (user_id, product_id)" +
                                 "VALUES ("+ userId + "," + prodId +")"
