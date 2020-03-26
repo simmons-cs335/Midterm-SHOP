@@ -16,7 +16,7 @@ public class Cart {
     private StateSalesTaxDao taxData = new StateSalesTaxDao("carletoc", "1683864");
     private ArrayList<Integer> item_ids;
  
-    private OrderConfirmationDAO OrderConfirmationData = new OrderConfirmationDAO("carletoc", "1683864");
+    private OrderConfirmationDAO order = new OrderConfirmationDAO("carletoc", "1683864");
     
     /**
      * @author Amran Hassan
