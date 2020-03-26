@@ -2,7 +2,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
  
 /**
- * @ author Amran Hassan
+ * @author Amran Hassan & Clara Carleton & Lila Crum
  */
 
 
