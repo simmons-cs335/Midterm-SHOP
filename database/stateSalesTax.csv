@@ -1,0 +1,52 @@
+state_id,state_initial,state_name,state_tax_rate
+0,AL,Alabama,0.040
+1,AK,Alaska,0.000
+2,AZ,Arizona,0.056
+3,AR,Arkansas,0.065
+4,CA,California,0.073
+5,CO,Colorado,0.029
+6,CT,Connecticut,0.064
+7,DE,Delaware,0.000
+8,FL,Florida,0.060
+9,GA,Georgia,0.040
+10,HI,Hawaii,0.040
+11,ID,Idaho,0.060
+12,IL,Illinois,0.063
+13,IN,Indiana,0.070
+14,IA,Iowa,0.060
+15,KS,Kansas,0.065
+16,KY,Kentucky,0.060
+17,LA,Louisiana,0.045
+18,ME,Maine,0.055
+19,MD,Maryland,0.060
+20,MA,Massachusetts,0.063
+21,MI,Michigan,0.060
+22,MN,Minnesota,0.069
+23,MS,Mississippi,0.070
+24,MO,Missouri,0.042
+25,MT,Montana,0.000
+26,NE,Nebraska,0.055
+27,NV,Nevada,0.069
+28,NH,New Hampshire,0.000
+29,NJ,New Jersey,0.066
+30,NM,New Mexico,0.051
+31,NY,New York,0.040
+32,NC,North Carolina,0.048
+33,ND,North Dakota,0.050
+34,OH,Ohio,0.058
+35,OK,Oklahoma,0.045
+36,OR,Oregon,0.000
+37,PA,Pennsylvania,0.060
+38,RI,Rhode Island,0.070
+39,SC,South Carolina,0.060
+40,SD,South Dakota,0.045
+41,TN,Tennessee,0.070
+42,TX,Texas,0.063
+43,UT,Utah,0.060
+44,VT,Vermont,0.060
+45,VA,Virginia,0.053
+46,WA,Washington,0.065
+47,WV,West Virginia,0.060
+48,WI,Wisconsin,0.050
+49,WY,Wyoming,0.040
+50,DC,D.C.,0.060

@@ -1,0 +1,11 @@
+product_id,product_name,product_department,product_price,initial_quantity,stock_quantity,sold_units
+1,USB thumb drive,Electronics,22.63,10,10,0
+2,Toothbrush,Health,4.99,10,10,0
+3,Bedsheet,Home,20,10,10,0
+4,Women's belt,Fashion,16,10,10,0
+5,Iron,Home,39.99,10,10,0
+6,Necklace,Jewelry,22,10,10,0
+7,Cardigan,Fashion,40,10,10,0
+8,Laptop,Electronics,700,10,10,0
+9,Heated blanket,Home,39.99,10,10,0
+10,Hair ties,Fashion,5.59,10,10,0

@@ -1,0 +1,4 @@
+payment_id,user_id,card_number,payment_method_type
+1,1,4109904278359505,Visa
+2,2,5417608342653934,MasterCard
+3,3,6011806038402271,Discover
