@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class UserDao {
 
     private Connection connection;
+    private int address_id;
     private String address;
     private String name;
     private ArrayList<User> users;
@@ -48,15 +49,26 @@ public class UserDao {
     /**
      * @author Clara Carleton
      */
-    //Add user
-    public void save(String[] cols){
+    //Add user (WIP)
+    public void newUser(User user){
         try {
+            Statement insertAddress = connection.createStatement();
+            insertAddress.execute(
+                    "INSERT INTO Address" +
+                            "(shipping_address, city, state, zip_code)" +
+                            "VALUES ('" + user.getAddress().getStreet() + "', '" + user.getAddress().getCity() + "', " +
+                            "'" + user.getAddress().getState() + "', '" + user.getAddress().getZipcode() + "')");
+            Statement getAddressId = connection.createStatement();
+            ResultSet rs = getAddressId.executeQuery( "SELECT address_id FROM Address WHERE address_id=(SELECT max(address_id) FROM Address)");
+
+            while (rs.next()) {
+                address_id = (rs.getInt(1));
+            }
             Statement insertUser = connection.createStatement();
             insertUser.execute(
                     "INSERT INTO Users " +
-                            "(user_id, user_name, shipping_address, city, state, zip_code, email)" +
-                            " VALUES ('" + cols[0] + "', '" + cols[1] + "', '" + cols[2] + "', '" + cols[3] + "', '" +
-                            cols[4] + "', '" + cols[5] + "', '" + cols[6] + "')");
+                            "(user_name, address_id, email)" +
+                            " VALUES ('" + user.getName() + "', '" + address_id + "', '" + user.getEmail() + "')");
         } catch (Exception e) {
             e.printStackTrace();
         }

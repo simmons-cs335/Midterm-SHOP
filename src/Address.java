@@ -18,6 +18,13 @@ public class Address {
         zipcode = addressData.getAddress(user_id).get(3);
     }
 
+    Address(String s, String c, String ste, CharSequence zc){
+        street = s;
+        city = c;
+        state = ste;
+        zipcode = zc;
+    }
+
     public String getStreet(){ return street; }
 
     public String getCity() { return city; }

@@ -22,6 +22,14 @@ public class User {
         c_num = userData.credit_num(id);
     }
 
+    User(String n, Cart c, Address a, String e, String cn){
+        name = n;
+        cart = c;
+        address = a;
+        email = e;
+        c_num = cn;
+    }
+
     public String getName(){ return name; }
 
     public String getEmail(){ return email; }
@@ -31,4 +39,5 @@ public class User {
     public String getCredit() { return c_num;}
 
     public Cart getCart(){ return cart; }
+
 }
