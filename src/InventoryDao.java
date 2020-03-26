@@ -73,7 +73,7 @@ public class InventoryDao {
         try {
             Statement addStock = connection.createStatement();
             addStock.execute(
-                    "UPDATE Inventory SET stock_quantity = stock_quantity + 3 WHERE product_id = " + prodId);
+                    "UPDATE Inventory SET stock_quantity = stock_quantity + 10 WHERE product_id = " + prodId);
         } catch (Exception e) {
             e.printStackTrace();
         }
