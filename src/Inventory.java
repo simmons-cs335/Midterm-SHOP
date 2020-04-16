@@ -6,7 +6,6 @@ public class Inventory {
     private InventoryDao productData = new InventoryDao("carletoc", "1683864");
     private String productName;
     private String productDepartment;
-    // private void addStock;
     private double productPrice;
     private int initialQuantity;
     private int soldUnits;
@@ -24,6 +23,20 @@ public class Inventory {
         stockQuantity = productData.checkStockLeft(prodId);
         numberOfProducts = productData.numberOfProducts(prodId);
         productID = prodId;
+    }
+
+    /**
+     * @author Clara Carleton
+     */
+    Inventory(int pi, String pn, String pd, double pp, int iq, int su, int sq, int np){
+        productID = pi;
+        productName = pn;
+        productDepartment = pd;
+        productPrice = pp;
+        initialQuantity = iq;
+        soldUnits = su;
+        stockQuantity = sq;
+        numberOfProducts = np;
     }
 
     /**
