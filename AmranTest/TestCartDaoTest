@@ -10,10 +10,10 @@ public class TestCartDAOTest {
 
    private int user_id = 1;
 
-   Inventory inventoryItem1 = new Inventory(9,"ToothBrush", "Health", 5.77,10,5,12 );
-   Inventory inventoryItem2 = new Inventory(6 , "Necklace","Jewelry", 	22, 10, 10, 0 );
-   Inventory inventoryItem3 = new Inventory(9, "Heated blanket" ,"Home", 	39.99,	10, 	10, 	0 );
-   Inventory inventoryItem4 = new Inventory(10, "Hair ties","Fashion",	5.59, 	10, 	10, 	0 );
+   Inventory inventoryItem1 = new Inventory(9,"ToothBrush", "Health", 5.77, 10, 5, 12 );
+   Inventory inventoryItem2 = new Inventory(6 , "Necklace","Jewelry", 22, 10, 10, 0 );
+   Inventory inventoryItem3 = new Inventory(9, "Heated blanket" ,"Home", 39.99, 10, 10, 0);
+   Inventory inventoryItem4 = new Inventory(10, "Hair ties","Fashion", 5.59, 10, 10, 0);
    ArrayList<Integer> cartItem1 = new ArrayList<>(Arrays.asList(1,1,6));
    ArrayList<Integer> cartItem2 = new ArrayList<>(Arrays.asList(2,1,9));
    ArrayList<Integer> cartItem3 = new ArrayList<>(Arrays.asList(3,1,10));
